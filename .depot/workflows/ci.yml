@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: depot-ubuntu-24.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build image
+        uses: depot/build-push-action@v1
+        with:
+          context: .
+          load: true
+          tags: myapp:ci
+
+      - name: Run tests
+        run: |
+          docker run --rm \
+            myapp:ci \
+            pytest tests/ -v
