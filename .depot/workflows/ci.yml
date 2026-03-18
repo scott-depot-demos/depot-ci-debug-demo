@@ -17,6 +17,7 @@ jobs:
         uses: depot/build-push-action@v1
         with:
           token: ${{ secrets.DEPOT_TOKEN }}
+          project: ${{ secrets.DEPOT_PROJECT }}
           context: .
           load: true
           tags: myapp:ci
