@@ -1,4 +1,4 @@
-name: CI
+name: Flask CI
 
 on:
   push:
@@ -16,6 +16,7 @@ jobs:
       - name: Build image
         uses: depot/build-push-action@v1
         with:
+          token: ${{ secrets.DEPOT_TOKEN }}
           context: .
           load: true
           tags: myapp:ci
