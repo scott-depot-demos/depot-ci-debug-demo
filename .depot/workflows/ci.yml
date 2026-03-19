@@ -13,6 +13,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Set up Depot CLI
+        uses: depot/setup-action@v1
+      
       - name: Build image
         uses: depot/build-push-action@v1
         with:
